@@ -1,0 +1,73 @@
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.productos-container {
+    background-color: #f8f9fa;
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+.card {
+    border: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn-gradient {
+    background: linear-gradient(45deg, #007bff, #00ff88);
+    border: none;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.btn-gradient:hover {
+    background: linear-gradient(45deg, #0056b3, #00cc77);
+}
+
+.carrito-container {
+    position: fixed;
+    top: 80px; /* Ajusta según la altura del header */
+    right: 20px;
+    width: 300px;
+    max-height: 70vh; /* Altura máxima del carrito (70% del viewport) */
+    overflow-y: auto; /* Scroll vertical cuando el contenido excede la altura */
+    border-radius: 10px;
+    z-index: 999;
+    background-color: #fff; /* Fondo blanco */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Sombra */
+    padding: 1rem;
+}
+
+.carrito-item {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.btn-carrito {
+    background-color: #ffffff; /* Fondo blanco */
+    border: 1px solid #ddd; /* Borde gris */
+    border-radius: 50%; /* Forma circular */
+    width: 50px; /* Ancho fijo */
+    height: 50px; /* Altura fija */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.btn-carrito:hover {
+    background-color: #f8f9fa; /* Cambia el color al pasar el mouse */
+    transform: scale(1.1); /* Efecto de escala */
+}
+
+.fa-shopping-cart {
+    font-size: 1.5rem; /* Tamaño del ícono */
+    color: #007bff; /* Color azul */
+}

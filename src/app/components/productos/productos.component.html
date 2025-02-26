@@ -1,0 +1,67 @@
+<!-- Header -->
+<header class="header p-3 bg-primary text-white shadow">
+    <div class="container d-flex justify-content-between align-items-center">
+        <!-- Botón "Regresar" -->
+        <button class="btn btn-light" (click)="regresar()">
+            Regresar
+        </button>
+
+        <!-- Título -->
+        <h2 class="mb-0">Productos Disponibles</h2>
+
+        <!-- Botón del Carrito -->
+        <button class="btn btn-light position-relative" (click)="mostrarCarrito = !mostrarCarrito">
+            <i class="fas fa-shopping-cart"></i> <!-- Ícono de carrito -->
+            <span *ngIf="carrito.length > 0" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                {{ carrito.length }} <!-- Número de productos en el carrito -->
+            </span>
+        </button>
+    </div>
+</header>
+
+<!-- Contenedor de Productos -->
+<div class="productos-container p-4">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col" *ngFor="let producto of productos">
+            <div class="card h-100 shadow-sm">
+                <div class="card-img-container">
+                    <img [src]="producto.imagen" class="card-img-top" alt="Imagen del producto">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">{{ producto.nombre }}</h3>
+                    <p class="card-text text-success fw-bold">${{ producto.precio }}</p>
+                    <button class="btn btn-primary btn-gradient w-100" (click)="agregarAlCarrito(producto)">
+                        Agregar al carrito
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Sección del Carrito -->
+<div class="carrito-container p-4 bg-light shadow" *ngIf="mostrarCarrito">
+    <h3 class="text-center mb-4">Carrito de Compras</h3>
+    <div *ngIf="carrito.length === 0" class="text-center text-muted">
+        <p>Tu carrito está vacío.</p>
+    </div>
+    <div *ngIf="carrito.length > 0">
+        <div class="carrito-item mb-3" *ngFor="let item of carrito">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h5>{{ item.producto.nombre }}</h5>
+                    <p class="text-muted">Cantidad: {{ item.cantidad }}</p>
+                    <p class="text-success fw-bold">${{ item.producto.precio * item.cantidad }}</p>
+                </div>
+                <button class="btn btn-danger btn-sm" (click)="eliminarDelCarrito(item)">
+                    Eliminar
+                </button>
+            </div>
+        </div>
+        <hr>
+        <div class="d-flex justify-content-between align-items-center">
+            <h4>Total:</h4>
+            <h4 class="text-success fw-bold">${{ precioTotal }}</h4>
+        </div>
+    </div>
+</div>
