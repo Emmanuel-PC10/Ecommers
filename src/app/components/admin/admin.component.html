@@ -1,0 +1,42 @@
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" routerLink="/">Ecommerce App</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <!-- Menu Aerolineas con submenus-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarProductos" role="button" data-bs-toggle="dropdown">
+                        Productos
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarProductos">
+                        <li><a class="dropdown-item" routerLink="/productos-edit">Listar Producctos</a></li>
+                    </ul>
+                </li>
+
+                <!--Menu de aeropuertos con submenus -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarClientes" role="button" data-bs-toggle="dropdown">
+                        Clientes
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarClientes">
+                        <li><a class="dropdown-item" routerLink="/clientes">Listar Clientes</a></li>
+                    </ul>
+                </li>
+
+                <!--Menu de aviones con submenus -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarAviones" role="button" data-bs-toggle="dropdown">
+                        Pedidos
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarPedidos">
+                        <li><a class="dropdown-item" routerLink="/pedidos">Listar Pedidos</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>

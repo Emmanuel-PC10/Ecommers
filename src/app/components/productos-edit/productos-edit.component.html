@@ -1,0 +1,76 @@
+<div class="container mt-5 pt-4">
+    <!-- Botón para mostrar/ocultar formulario -->
+    <button class="btn btn-primary mt-4" (click)="toggleForm()">
+      {{ showForm ? 'Cerrar Formulario' : 'Crear Nuevo Producto' }}
+    </button>
+    
+    <h1 class="text-center my-4 text-primary">Listado de Productos</h1>
+    
+    <div class="table-responsive">
+      <table class="table table-hover text-center" style="background-color: #f8f9fa; border-radius: 10px;">
+        <thead class="bg-primary text-white">
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let producto of productos; let i = index" class="bg-light">
+            <td>{{i +1}}</td>
+            <td>{{producto.idProducto}}</td>
+            <td>{{ producto.nombre }}</td>
+            <td>{{ producto.descripcion }}</td>
+            <td>{{ producto.precio }}</td>
+            <td>{{ producto.stock }}</td>
+            <td>
+              <button class="btn btn-warning btn-sm me-2" (click)="editProducto(producto)">
+                <i class="bi bi-pencil-fill"></i> Editar
+              </button>
+              <button class="btn btn-danger btn-sm" (click)="deleteProductos(producto.idProducto!)">
+  <i class="bi bi-trash-fill"></i> Eliminar
+</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  <!-- Formulario para crear una nueva aerolínea -->
+  <div *ngIf="showForm" class="container mt-4 p-4 border rounded bg-light shadow" style="background-color: #e3f2fd;">
+    <h3 class="text-center text-primary">{{ textoModal }}</h3>
+    <form [formGroup]="productoForm" (ngSubmit)="onSubmit()">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label for="nombre" class="form-label text-primary">Nombre</label>
+          <input id="nombre" class="form-control" formControlName="nombre" placeholder="Nombre" required>
+        </div>
+  
+        <div class="col-md-6">
+          <label for="descripcion" class="form-label text-primary">Descripcion</label>
+          <input id="descripcion" class="form-control" formControlName="descripcion" placeholder="descripcion" required>
+        </div>
+  
+        <div class="col-md-6">
+          <label for="precio" class="form-label text-primary">Precio</label>
+          <input id="precio" class="form-control" formControlName="precio" placeholder="precio" required>
+        </div>
+  
+        <div class="col-md-6">
+          <label for="stock" class="form-label text-primary">Stock</label>
+          <input id="stock" class="form-control" formControlName="stock" placeholder="stock" required>
+        </div>
+  
+      </div>
+      <div class="text-center mt-3">
+        <button type="submit" [disabled]="productoForm.invalid" class="btn btn-success">
+          <i class="bi bi-check-circle"></i> Guardar Producto
+        </button>
+      </div>
+    </form>
+  </div>
+  

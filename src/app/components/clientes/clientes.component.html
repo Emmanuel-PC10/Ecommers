@@ -1,0 +1,82 @@
+<div class="container mt-5 pt-4">
+    <!-- Botón para mostrar/ocultar formulario -->
+    <button class="btn btn-primary mt-4" (click)="toggleForm()">
+      {{ showForm ? 'Cerrar Formulario' : 'Crear Nuevo Cliente' }}
+    </button>
+    
+    <h1 class="text-center my-4 text-primary">Listado de Clientes</h1>
+    
+    <div class="table-responsive">
+      <table class="table table-hover text-center" style="background-color: #f8f9fa; border-radius: 10px;">
+        <thead class="bg-primary text-white">
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Email</th>
+            <th>Telefono</th>
+            <th>Direccion</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cliente of clientes; let i = index" class="bg-light">
+            <td>{{i +1}}</td>
+            <td hidden>{{cliente.id}}</td>
+            <td>{{ cliente.nombre }}</td>
+            <td>{{ cliente.apellido }}</td>
+            <td>{{ cliente.email }}</td>
+            <td>{{ cliente.telefono }}</td>
+            <td>{{ cliente.direccion }}</td>
+            <td>
+              <button class="btn btn-warning btn-sm me-2" (click)="editCliente(cliente)">
+                <i class="bi bi-pencil-fill"></i> Editar
+              </button>
+              <button class="btn btn-danger btn-sm" (click)="deleteCliente(cliente.id!)">
+                <i class="bi bi-trash-fill"></i> Eliminar
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  <!-- Formulario para crear un nuevo cliente -->
+  <div *ngIf="showForm" class="container mt-4 p-4 border rounded bg-light shadow" style="background-color: #e3f2fd;">
+    <h3 class="text-center text-primary">{{ textoModal }}</h3>
+    <form [formGroup]="clienteForm" (ngSubmit)="onSubmit()">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label for="nombre" class="form-label text-primary">Nombre</label>
+          <input id="nombre" class="form-control" formControlName="nombre" placeholder="Nombre" required>
+        </div>
+  
+        <div class="col-md-6">
+          <label for="apellido" class="form-label text-primary">apellido</label>
+          <input id="apellido" class="form-control" formControlName="apellido" placeholder="Apellido" required>
+        </div>
+  
+        <div class="col-md-6">
+          <label for="email" class="form-label text-primary">Latitud</label>
+          <input id="email" class="form-control" formControlName="email" placeholder="email" required>
+        </div>
+  
+        <div class="col-md-6">
+          <label for="telefono" class="form-label text-primary">telefono</label>
+          <input id="telefono" class="form-control" formControlName="telefono" placeholder="telefono" required>
+        </div>
+  
+        <div class="col-md-6">
+          <label for="direccion" class="form-label text-primary">direccion</label>
+          <input id="direccion" class="form-control" formControlName="direccion" placeholder="direccion" required>
+        </div>
+  
+      </div>
+      <div class="text-center mt-3">
+        <button type="submit" class="btn btn-success">
+          <i class="bi bi-check-circle"></i> Guardar Cliente
+        </button>
+      </div>
+    </form>
+  </div>
