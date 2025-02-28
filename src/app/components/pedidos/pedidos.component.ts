@@ -20,6 +20,7 @@ export class PedidosComponent implements OnInit{
   isEditMode: Boolean = false;
   selectedPedido: Pedido | null = null;
   clientes: Cliente[] = [];
+  
 
 
   constructor(
@@ -32,7 +33,7 @@ export class PedidosComponent implements OnInit{
       id: [null],
       total: ['',[Validators.required]],
       idCliente: ['',[Validators.required]],
-      estatus: ['',[Validators.required]],
+      estado: ['',[Validators.required]],
       fechaCreacion: ['',[Validators.required]]
     });
   }

@@ -40,5 +40,53 @@
     </div>
   </div>
   
+  <!-- Formulario para crear/editar vuelo -->
+<div *ngIf="showForm" class="container mt-4 p-4 border rounded shadow-sm bg-light">
+  <h3 class="text-center text-primary">{{ textoModal }}</h3>
+  <form [formGroup]="pedidoForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+
+      <div class="col-md-6">
+        <div class="form-group mb-3">
+          <label for="idCliente">Cliente</label>
+          <select id="idCliente" class="form-control" formControlName="idCliente" required>
+            <option *ngFor="let pedido of pedidos" [value]="pedido.id">{{ pedido.cliente.nombre }}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="form-group mb-3">
+        <label for="total">Total</label>
+        <input id="total" class="form-control" formControlName="total" placeholder="total" required>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group mb-3">
+          <label for="fechaCreacion">Fecha de Creacion</label>
+          <input id="fechaCreacion" type="date" class="form-control" formControlName="fechaCreacion" required>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group mb-3">
+          <label for="estado">Estado</label>
+          <select id="estado" class="form-control" formControlName="estado">
+            <option value="1">Pendiente</option>
+            <option value="2">Enviado</option>
+            <option value="3">Entregado</option>
+            <option value="4">Cancelado</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center">
+      <button type="submit" [disabled]="pedidoForm.invalid" class="btn btn-success mt-3 px-4">Guardar Pedido</button>
+    </div>
+  </form>
+</div>
   
   

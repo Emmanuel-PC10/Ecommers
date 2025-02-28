@@ -21,7 +21,7 @@
         <tbody>
           <tr *ngFor="let producto of productos; let i = index" class="bg-light">
             <td>{{i +1}}</td>
-            <td>{{producto.idProducto}}</td>
+            <td hidden>{{producto.idProducto}}</td>
             <td>{{ producto.nombre }}</td>
             <td>{{ producto.descripcion }}</td>
             <td>{{ producto.precio }}</td>
